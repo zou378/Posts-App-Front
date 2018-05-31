@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { PostsListComponent } from './components/posts-list/posts-list.component';
@@ -11,15 +11,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { PostDetailsGuard } from './guards/post-details.guard';
+import { RoutingModule } from './routing/routing.module';
 
 
-const my_routes = [
-  {path: 'detail/:id', canActivate: [PostDetailsGuard] , component: PostDetailsComponent} ,
-  {path: 'list', component: PostsListComponent} ,
-  {path: 'welcome', component: WelcomeComponent} ,
-  {path: '', redirectTo: './welcome', pathMatch: 'full'} ,
-  {path: '**', component: NotfoundComponent}
-];
 
 @NgModule({
   declarations: [
@@ -34,7 +28,7 @@ const my_routes = [
   imports: [
     BrowserModule,
     HttpClientModule, // since angular 4.3+
-    RouterModule.forRoot(my_routes)
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
